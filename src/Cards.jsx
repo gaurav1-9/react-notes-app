@@ -9,7 +9,7 @@ function Cards({cardDetails}) {
     dragConstraints={
         {left: 0, top:0, bottom:420, right:1325}
     }
-    whileDrag={{scale:1.1}}
+    whileDrag={{scale:1.1, cursor:"grabbing"}}
     className='text-zinc-300 px-5 pt-6 w-60 h-80 bg-zinc-600 rounded-2xl cursor-grab'>
         <div className='flex '>
             <TbFileSmile className='text-4xl'/>
