@@ -9,6 +9,12 @@ function Cards({ cardDetails, foregroundRef,id }) {
   const [title, setTitle] = useState(cardDetails.title);
   const [desc, setDesc] = useState(cardDetails.desc);
 
+  function updateContent(title, desc){
+    setTitle(title);
+    setDesc(desc);
+    console.log("Card: "+title+" "+desc);
+  }
+
   return (
     (!view) ? (
       <motion.div 
@@ -44,7 +50,7 @@ function Cards({ cardDetails, foregroundRef,id }) {
           </p>
         </div>
       </motion.div>
-    ) : <ExpandedCard cardDetails={cardDetails} setView={setView} id={id}/>
+    ) : <ExpandedCard cardDetails={cardDetails} setView={setView} id={id} updateFunc={updateContent}/>
   );
 }
 
