@@ -6,7 +6,7 @@ import { RxCross2 } from "react-icons/rx";
 import { Tooltip } from 'react-tooltip';
 import metaDate from './date';
 
-function ExpandedCard({cardDetails, setView, id, updateFunc, isAdd}) {
+function ExpandedCard({cardDetails, setView, id, updateFunc, isAdd, deleteFunc}) {
     const [title, setTitle] = useState(cardDetails.title);
     const [desc, setDesc] = useState(cardDetails.desc);
     return (
@@ -63,7 +63,9 @@ function ExpandedCard({cardDetails, setView, id, updateFunc, isAdd}) {
                     data-tooltip-id='done'
                     className='absolute bottom-4 right-4 text-zinc-300 outline-none text-4xl hover:text-zinc-400 cursor-pointer'
                     onClick={() => {
-                        updateFunc(title,desc);
+                        if((title!==undefined && desc!==undefined) || desc!==undefined){
+                            updateFunc(title,desc);
+                        }
                         setView(false);
                     }}
                 />
@@ -71,6 +73,7 @@ function ExpandedCard({cardDetails, setView, id, updateFunc, isAdd}) {
                     data-tooltip-id='del'
                     className='absolute bottom-6 left-5 text-red-300 outline-none text-3xl hover:text-red-400 cursor-pointer'
                     onClick={() => {
+                        deleteFunc(id);
                         setView(false);
                     }}
                 />:null}

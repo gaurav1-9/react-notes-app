@@ -3,7 +3,7 @@ import { TbFileSmile } from "react-icons/tb";
 import { motion } from "motion/react";
 import ExpandedCard from './ExpandedCard';
 
-function Cards({ cardDetails, foregroundRef, id, dataChange }) {
+function Cards({ cardDetails, foregroundRef, id, dataChange, setCardInfo }) {
   const [view, setView] = useState(false);
 
   const [title, setTitle] = useState(cardDetails.title);
@@ -29,7 +29,7 @@ function Cards({ cardDetails, foregroundRef, id, dataChange }) {
           <div>
             <p className='font-semibold'>
               {
-                (title==="")?"File "+(id+1)
+                (title==="" || title===undefined)?"File "+(id+1)
                 :(title.length>16)?title.slice(0,16)+"...":title
               }
             </p>
@@ -50,7 +50,7 @@ function Cards({ cardDetails, foregroundRef, id, dataChange }) {
           </p>
         </div>
       </motion.div>
-    ) : <ExpandedCard cardDetails={cardDetails} setView={setView} id={id} isAdd={false} updateFunc={updateContent}/>
+    ) : <ExpandedCard cardDetails={cardDetails} setView={setView} id={id} isAdd={false} deleteFunc={(id) => setCardInfo(prev => prev.filter((_, i) => i !== id))} updateFunc={updateContent}/>
   );
 }
 

@@ -33,7 +33,7 @@ function Foreground() {
         {
             cardInfo.map((item,index)=>(
                 (item.desc!=="" || item.title!=="")
-                ?<Cards key={index} id={index} cardDetails={item} foregroundRef={componentRef} dataChange={dataChange}/>
+                ?<Cards key={index} id={index} cardDetails={item} foregroundRef={componentRef} dataChange={dataChange} setCardInfo={setCardInfo}/>
                 :null
             ))
         }
@@ -53,7 +53,7 @@ function Foreground() {
         </div>
         {
             (addView)
-            ?<ExpandedCard cardDetails={cardInfo} id={cardInfo.length} setView={setAddView} isAdd={true} updateFunc={addData} />
+            ?<ExpandedCard cardDetails={cardInfo} id={cardInfo.length} setView={setAddView} isAdd={true} updateFunc={addData} deleteFunc={(id) => setCardInfo(prev => prev.filter((_, i) => i !== id))}/>
             :null
         }
     </div>
