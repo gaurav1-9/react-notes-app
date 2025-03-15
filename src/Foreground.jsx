@@ -11,8 +11,8 @@ function Foreground() {
 
     const [cardInfo, setCardInfo] = useState([
         {
-        "title": "👋🏻 Welcome",
-        "desc": "Let's get started! ✨ Add your first entry now.\n~Gaurav",
+        "title": "👋🏻 Hello There",
+        "desc": "Let's get started! ✨ Add your first entry now📝✍🏻.\nYou can drag me around as well.\n ~Gaurav",
         "meta": metaDate
         },
     ])
