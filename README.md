@@ -10,6 +10,19 @@ A simple draggable notes application built with React and Tailwind CSS.
 - Drag and move notes freely within the screen.
 - Modern and Visually appealing UI.
 
+## Project Screenshots
+
+
+<p align="center">
+  <img src="./SS/initial.png" alt="Initial Home Page" width="300">
+</p>
+<p align="center">
+  <img src="./SS/adding%20new%20note.png" alt="Adding a new note" width="300">
+</p>
+<p align="center">
+  <img src="./SS/multipleNotes.png" alt="Dragged notes to your choice" width="300">
+</p>
+
 ## Tech Stack
 
 - React
@@ -18,11 +31,12 @@ A simple draggable notes application built with React and Tailwind CSS.
 - react-tooltip
 - motion/react (for draggable animations)
 
-## Project Screenshots
-
-![Initial Home Page](./SS/initial.png)
-![Dragged notes to your choice](./SS/multipleNotes.png)
-![Adding a new note](./SS/adding%20new%20note.png)
+## Dependencies
+- react
+- tailwindcss
+- react-icon
+- react-tooltip
+- motion (Framer Motion)
 
 ## Contribution
 
