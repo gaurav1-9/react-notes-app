@@ -10,17 +10,17 @@ function Foreground() {
 
     var cardInfo = [
         {
-        "title": "File 1",
+        "title": "File 1xyz",
         "desc": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi dolorem fugiat ab numquam reiciendis vero minus, quo exercitationem sed mollitia voluptatum quos quaerat laborum quae. Nam itaque quod ex quidem. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Saepe consectetur dicta vitae doloremque laborum earum!",
         "meta": d.getDate()+" "+months[d.getMonth()]+", "+d.getFullYear()
         },
         {
-        "title": "File 2",
+        "title": "",
         "desc": "Hello",
         "meta": d.getDate()+" "+months[d.getMonth()]+", "+d.getFullYear()
         },
         {
-        "title": "File 3",
+        "title": "File 3jbcjkbc xyz abc",
         "desc": "slsxnasnxlknlkx",
         "meta": d.getDate()+" "+months[d.getMonth()]+", "+d.getFullYear()
         },
@@ -30,7 +30,9 @@ function Foreground() {
     <div ref={componentRef} className='overflow-hidden fixed flex flex-wrap gap-2 top-0 left-0 w-full h-screen p-4 z-10'>
         {
             cardInfo.map((item,index)=>(
-                (item.desc!=="")?<Cards key={index} id={index} cardDetails={item} foregroundRef={componentRef}/>: null
+                (item.desc!=="" || item.title!=="")
+                ?<Cards key={index} id={index} cardDetails={item} foregroundRef={componentRef}/>
+                :null
             ))
         }
         <div className='absolute top-8 right-8'>

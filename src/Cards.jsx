@@ -6,8 +6,8 @@ import ExpandedCard from './ExpandedCard';
 function Cards({ cardDetails, foregroundRef,id }) {
   const [view, setView] = useState(false);
 
-  const [savedTitle, setSavedTitle] = useState(cardDetails.title);
-  const [savedDesc, setSavedDesc] = useState(cardDetails.desc);
+  const [title, setTitle] = useState(cardDetails.title);
+  const [desc, setDesc] = useState(cardDetails.desc);
 
   return (
     (!view) ? (
@@ -23,14 +23,15 @@ function Cards({ cardDetails, foregroundRef,id }) {
           <div>
             <p className='font-semibold'>
               {
-                (savedTitle.length>16)?savedTitle.slice(0,16)+"...":savedTitle
+                (title==="")?"File "+(id+1)
+                :(title.length>16)?title.slice(0,16)+"...":title
               }
             </p>
             <p className='leading-2 text-zinc-400 text-sm'>{cardDetails.meta}</p>
           </div>
         </div>
         <p className='mt-6 px-5'>{
-          (savedDesc.length>110)?savedDesc.slice(0,110)+"...":savedDesc
+          (desc.length>110)?desc.slice(0,110)+"...":desc
         }
         </p>
         <div className='absolute bg-orange-400 h-15 bottom-0 w-full'>

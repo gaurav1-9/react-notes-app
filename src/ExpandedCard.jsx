@@ -4,9 +4,9 @@ import { IoMdCheckmark } from "react-icons/io";
 import { RxCross2 } from "react-icons/rx";
 import { Tooltip } from 'react-tooltip';
 
-function ExpandedCard({cardDetails, view, setView}) {
-    var [title, setTitle] = useState(cardDetails.title);
-    var [desc, setDesc] = useState(cardDetails.desc);
+function ExpandedCard({cardDetails, setView, id}) {
+    const [title, setTitle] = useState(cardDetails.title);
+    const [desc, setDesc] = useState(cardDetails.desc);
     var prevTitle = cardDetails.title;
     var prevDesc = cardDetails.desc;
     return (
@@ -18,8 +18,13 @@ function ExpandedCard({cardDetails, view, setView}) {
                         <div>
                             <input
                                 className='text-4xl outline-none bg-transparent text-white'
-                                value={title}
-                                onChange={(e) => setTitle(e.target.value)}
+                                value={
+                                    (title==="")?"File "+(id+1):title
+                                }
+                                onChange={(e) => {
+                                        setTitle(e.target.value)
+                                    }
+                                }
                             />
                             <p className='leading-3.5 text-zinc-400'>{cardDetails.meta}</p>
                         </div>
@@ -28,9 +33,8 @@ function ExpandedCard({cardDetails, view, setView}) {
                         data-tooltip-id='close'
                         className='text-zinc-300 text-4xl hover:text-zinc-400 cursor-pointer outline-none'
                         onClick={() => {
+                                console.log(title+" "+desc)
                                 setView(false);
-                                setTitle(prevTitle);
-                                setDesc(prevDesc);
                             }
                         }
                     />
@@ -39,7 +43,10 @@ function ExpandedCard({cardDetails, view, setView}) {
                 <textarea
                     className='mt-10 px-4 w-full h-3/5 outline-none bg-transparent text-white'
                     value={desc}
-                    onChange={(e) => {setDesc(e.target.value)}}
+                    onChange={(e) => {
+                            setDesc(e.target.value)
+                        }
+                    }
                 />
 
                 <IoMdCheckmark
