@@ -26,12 +26,18 @@ function Foreground() {
         },
     ]
 
+    function dataChange(id,title,desc){
+        console.log("Partent: "+id+", "+title+","+desc)
+        cardInfo[id].title = title;
+        cardInfo[id].desc = desc;
+    }
+
     return (
     <div ref={componentRef} className='overflow-hidden fixed flex flex-wrap gap-2 top-0 left-0 w-full h-screen p-4 z-10'>
         {
             cardInfo.map((item,index)=>(
                 (item.desc!=="" || item.title!=="")
-                ?<Cards key={index} id={index} cardDetails={item} foregroundRef={componentRef}/>
+                ?<Cards key={index} id={index} cardDetails={item} foregroundRef={componentRef} dataChange={dataChange}/>
                 :null
             ))
         }

@@ -3,7 +3,7 @@ import { TbFileSmile } from "react-icons/tb";
 import { motion } from "motion/react";
 import ExpandedCard from './ExpandedCard';
 
-function Cards({ cardDetails, foregroundRef,id }) {
+function Cards({ cardDetails, foregroundRef, id, dataChange }) {
   const [view, setView] = useState(false);
 
   const [title, setTitle] = useState(cardDetails.title);
@@ -12,7 +12,7 @@ function Cards({ cardDetails, foregroundRef,id }) {
   function updateContent(title, desc){
     setTitle(title);
     setDesc(desc);
-    console.log("Card: "+title+" "+desc);
+    dataChange(id,title,desc);
   }
 
   return (

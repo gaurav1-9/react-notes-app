@@ -7,7 +7,6 @@ import { Tooltip } from 'react-tooltip';
 function ExpandedCard({cardDetails, setView, id, updateFunc}) {
     const [title, setTitle] = useState(cardDetails.title);
     const [desc, setDesc] = useState(cardDetails.desc);
-    console.log(title +" : "+desc);
     return (
         <div className='w-full h-screen absolute top-0 backdrop-blur-md z-20 -left-4'>
             <div className='relative text-zinc-300 w-1/2 h-3/4 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-zinc-600 rounded-2xl overflow-clip p-4 z-50 shadow-[0_0_6px_rgba(0,0,0,0.25)]'>
@@ -18,14 +17,14 @@ function ExpandedCard({cardDetails, setView, id, updateFunc}) {
                             <input
                                 className='text-4xl outline-none bg-transparent text-white'
                                 value={
-                                    (title==="")?null:title
+                                    (title==="")?"":title
                                 }
                                 onChange={(e) => {
                                         setTitle(e.target.value)
                                     }
                                 }
                                 placeholder={
-                                    (title==="")?"File "+(id+1):null
+                                    (title==="")?"File "+(id+1):""
                                 }
                             />
                             <p className='leading-3.5 text-zinc-400'>{cardDetails.meta}</p>
@@ -44,7 +43,7 @@ function ExpandedCard({cardDetails, setView, id, updateFunc}) {
                 <textarea
                     className='mt-10 px-4 w-full h-3/5 outline-none bg-transparent text-white'
                     value={
-                        (desc==="")?null:desc
+                        (desc==="")?"":desc
                     }
                     placeholder={
                         (desc==="")? "Write your thoughts here...":desc
