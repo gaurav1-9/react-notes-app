@@ -1,35 +1,31 @@
-import React, { useRef } from 'react'
+import React, { useRef, useState } from 'react'
 import Cards from './Cards';
 import { FiPlusCircle } from "react-icons/fi";
 import { Tooltip } from 'react-tooltip'
+import ExpandedCard from './ExpandedCard';
+import metaDate from './date';
 
 function Foreground() {
     const componentRef = useRef(null);
-    const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-    const d = new Date();
+    
 
-    var cardInfo = [
+    const [cardInfo, setCardInfo] = useState([
         {
-        "title": "File 1xyz",
-        "desc": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi dolorem fugiat ab numquam reiciendis vero minus, quo exercitationem sed mollitia voluptatum quos quaerat laborum quae. Nam itaque quod ex quidem. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Saepe consectetur dicta vitae doloremque laborum earum!",
-        "meta": d.getDate()+" "+months[d.getMonth()]+", "+d.getFullYear()
+        "title": "👋🏻 Welcome",
+        "desc": "Let's get started! ✨ Add your first entry now.\n~Gaurav",
+        "meta": metaDate
         },
-        {
-        "title": "",
-        "desc": "Hello",
-        "meta": d.getDate()+" "+months[d.getMonth()]+", "+d.getFullYear()
-        },
-        {
-        "title": "File 3jbcjkbc xyz abc",
-        "desc": "slsxnasnxlknlkx",
-        "meta": d.getDate()+" "+months[d.getMonth()]+", "+d.getFullYear()
-        },
-    ]
+    ])
 
     function dataChange(id,title,desc){
-        console.log("Partent: "+id+", "+title+","+desc)
         cardInfo[id].title = title;
         cardInfo[id].desc = desc;
+    }
+
+    const [addView, setAddView] = useState(false)
+
+    function addData(title,desc){
+        setCardInfo(prev => [...prev, { title: title, desc: desc, meta: metaDate }]);
     }
 
     return (
@@ -42,7 +38,11 @@ function Foreground() {
             ))
         }
         <div className='absolute top-8 right-8'>
-            <FiPlusCircle data-tooltip-id='addNew' className='text-zinc-500 text-5xl cursor-pointer'/>
+            <FiPlusCircle 
+                data-tooltip-id='addNew' 
+                className='text-zinc-500 text-5xl cursor-pointer'
+                onClick={()=>setAddView(true)}
+            />
             <Tooltip
                 id='addNew'
                 content='Add new'
@@ -51,6 +51,11 @@ function Foreground() {
                 style={{borderRadius:10}}
             />
         </div>
+        {
+            (addView)
+            ?<ExpandedCard cardDetails={cardInfo} id={cardInfo.length} setView={setAddView} isAdd={true} updateFunc={addData} />
+            :null
+        }
     </div>
   );
 }

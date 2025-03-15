@@ -50,7 +50,7 @@ function Cards({ cardDetails, foregroundRef, id, dataChange }) {
           </p>
         </div>
       </motion.div>
-    ) : <ExpandedCard cardDetails={cardDetails} setView={setView} id={id} updateFunc={updateContent}/>
+    ) : <ExpandedCard cardDetails={cardDetails} setView={setView} id={id} isAdd={false} updateFunc={updateContent}/>
   );
 }
 

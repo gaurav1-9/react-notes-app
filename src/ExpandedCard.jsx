@@ -1,10 +1,12 @@
 import React, { useState } from 'react'
 import { TbFileSmile } from "react-icons/tb";
 import { IoMdCheckmark } from "react-icons/io";
+import { FaTrashAlt } from "react-icons/fa";
 import { RxCross2 } from "react-icons/rx";
 import { Tooltip } from 'react-tooltip';
+import metaDate from './date';
 
-function ExpandedCard({cardDetails, setView, id, updateFunc}) {
+function ExpandedCard({cardDetails, setView, id, updateFunc, isAdd}) {
     const [title, setTitle] = useState(cardDetails.title);
     const [desc, setDesc] = useState(cardDetails.desc);
     return (
@@ -17,17 +19,20 @@ function ExpandedCard({cardDetails, setView, id, updateFunc}) {
                             <input
                                 className='text-4xl outline-none bg-transparent text-white'
                                 value={
-                                    (title==="")?"":title
+                                    (title==="" || title===undefined)?"":title
                                 }
                                 onChange={(e) => {
                                         setTitle(e.target.value)
                                     }
                                 }
                                 placeholder={
-                                    (title==="")?"File "+(id+1):""
+                                    (title==="" || title===undefined)?"File "+(id+1):""
                                 }
                             />
-                            <p className='leading-3.5 text-zinc-400'>{cardDetails.meta}</p>
+                            <p className='leading-3.5 text-zinc-400'>{
+                                    (cardDetails.meta===undefined)?metaDate:cardDetails.meta
+                                }
+                            </p>
                         </div>
                     </div>
                     <RxCross2
@@ -43,10 +48,10 @@ function ExpandedCard({cardDetails, setView, id, updateFunc}) {
                 <textarea
                     className='mt-10 px-4 w-full h-3/5 outline-none bg-transparent text-white'
                     value={
-                        (desc==="")?"":desc
+                        (desc==="" || desc===undefined)?"":desc
                     }
                     placeholder={
-                        (desc==="")? "Write your thoughts here...":desc
+                        (desc==="" || desc===undefined)? "Write your thoughts here...":desc
                     }
                     onChange={(e) => {
                             setDesc(e.target.value)
@@ -62,8 +67,16 @@ function ExpandedCard({cardDetails, setView, id, updateFunc}) {
                         setView(false);
                     }}
                 />
+                {(!isAdd)?<FaTrashAlt
+                    data-tooltip-id='del'
+                    className='absolute bottom-6 left-5 text-red-300 outline-none text-3xl hover:text-red-400 cursor-pointer'
+                    onClick={() => {
+                        setView(false);
+                    }}
+                />:null}
 
                 <Tooltip id='done' content='Confirm' place='left' style={{ borderRadius: 10 }} variant='light' />
+                <Tooltip id='del' content='Delete Card' place='right' style={{ borderRadius: 10 }} variant='light' />
                 <Tooltip id='close' content='Close' place='left' style={{ borderRadius: 10 }} variant='light' />
             </div>
         </div>
