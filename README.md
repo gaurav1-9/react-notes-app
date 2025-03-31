@@ -14,12 +14,12 @@ A simple draggable notes application built with React and Tailwind CSS.
 
 
 <p align="center">
-  <img src="./SS/initial.png" alt="Initial Home Page" width="500">
-  <img src="./SS/adding%20new%20note.png" alt="Adding a new note" width="500">
+  <img src="./frontend/SS/initial.png" alt="Initial Home Page" width="500">
+  <img src="./frontend/SS/adding%20new%20note.png" alt="Adding a new note" width="500">
 </p>
 <p align="center">
 <p align="center">
-  <img src="./SS/multipleNotes.png" alt="Dragged notes to your choice" width="500">
+  <img src="./frontend/SS/multipleNotes.png" alt="Dragged notes to your choice" width="500">
 </p>
 
 ## Tech Stack
