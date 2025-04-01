@@ -7,7 +7,7 @@ function App() {
   return (
     <div>
       <Background/>
-      <Foreground/>
+      {/* <Foreground/> */}
     </div>
   )
 }
