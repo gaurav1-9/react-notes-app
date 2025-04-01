@@ -22,26 +22,26 @@ function Cards({ cardDetails, foregroundRef, id, dataChange, setCardInfo }) {
         dragConstraints={foregroundRef}
         whileDrag={{ scale: 1.1, cursor: "grabbing" }}
         dragTransition={{ bounceStiffness: 600, bounceDamping: 25 }}
-        className='relative text-zinc-300 w-60 h-75 bg-zinc-600 rounded-2xl cursor-grab overflow-clip'
+        className='relative text-zinc-300 w-40 h-25 lg:w-60 lg:h-75 bg-zinc-600 rounded-xl lg:rounded-2xl cursor-grab overflow-clip'
       >
-        <div className='flex px-5 pt-6'>
-          <TbFileSmile className='text-4xl mr-1' />
+        <div className='flex px-2 pt-3 lg:px-5 lg:pt-6'>
+          <TbFileSmile className='text-2xl mr-1 lg:text-4xl' />
           <div>
-            <p className='font-semibold'>
+            <p className='font-semibold text-[10px] lg:text-lg'>
               {
                 (title==="" || title===undefined)?"File "+(id+1)
                 :(title.length>16)?title.slice(0,16)+"...":title
               }
             </p>
-            <p className='leading-2 text-zinc-400 text-sm'>{cardDetails.meta}</p>
+            <p className='leading-2 text-zinc-400 text-[10px] lg:text-sm'>{cardDetails.meta}</p>
           </div>
         </div>
-        <p className='mt-6 px-5'>{
+        <p className='hidden lg:mt-6 lg:px-5 lg:block'>{
           (desc.length>110)?desc.slice(0,110)+"...":desc
         }
         </p>
-        <div className='absolute bg-orange-400 h-15 bottom-0 w-full'>
-          <p className='flex justify-center items-center h-full cursor-pointer text-2xl font-semibold'
+        <div className='absolute bg-orange-400 h-10 lg:h-15 bottom-0 w-full'>
+          <p className='flex justify-center items-center h-full cursor-pointer text-lg lg:text-2xl font-semibold'
             onClick={() => {
               setView(true);
             }}

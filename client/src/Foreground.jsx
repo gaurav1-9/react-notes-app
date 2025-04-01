@@ -30,17 +30,19 @@ function Foreground() {
 
     return (
     <div ref={componentRef} className='overflow-hidden fixed flex flex-wrap gap-2 top-0 left-0 w-full h-screen p-4 z-10'>
-        {
-            cardInfo.map((item,index)=>(
-                (item.desc!=="" || item.title!=="")
-                ?<Cards key={index} id={index} cardDetails={item} foregroundRef={componentRef} dataChange={dataChange} setCardInfo={setCardInfo}/>
-                :null
-            ))
-        }
+        <div className='mt-14 lg:mt-0'>
+            {
+                cardInfo.map((item,index)=>(
+                    (item.desc!=="" || item.title!=="")
+                    ?<Cards key={index} id={index} cardDetails={item} foregroundRef={componentRef} dataChange={dataChange} setCardInfo={setCardInfo}/>
+                    :null
+                ))
+            }
+        </div>
         <div className='absolute top-8 right-8'>
             <FiPlusCircle 
                 data-tooltip-id='addNew' 
-                className='text-zinc-500 text-5xl cursor-pointer'
+                className='text-zinc-500 text-3xl cursor-pointer lg:text-5xl'
                 onClick={()=>setAddView(true)}
             />
             <Tooltip
