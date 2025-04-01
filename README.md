@@ -41,11 +41,13 @@ A simple and responsive draggable notes application built with React and Tailwin
 ## Dependencies
 ### Frontend
 ```bash
+cd client
 npm install react tailwindcss react-icons react-tooltip framer-motion
 ```
 
 ### Backend
 ```bash
+cd server
 npm install express joi
 ```
 
