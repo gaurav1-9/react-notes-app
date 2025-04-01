@@ -29,7 +29,7 @@ function Foreground() {
     }
 
     return (
-    <div ref={componentRef} className='overflow-hidden fixed  top-0 left-0 w-full h-screen px-2 py-4 lg:px-4 lg:py-4 z-10'>
+    <div ref={componentRef} className='overflow-hidden fixed top-0 left-0 w-full h-screen px-2 py-4 lg:px-4 lg:py-4 z-10'>
         <div className='mt-14 lg:mt-0 w-screen flex flex-wrap gap-2'>
             {
                 cardInfo.map((item,index)=>(
@@ -42,7 +42,7 @@ function Foreground() {
         <div className='absolute top-8 right-8'>
             <FiPlusCircle 
                 data-tooltip-id='addNew' 
-                className='text-zinc-500 text-3xl cursor-pointer lg:text-5xl'
+                className='text-zinc-500 text-3xl cursor-pointer lg:text-5xl outline-none'
                 onClick={()=>{
                         (cardInfo.length<10)?
                         setAddView(true)
