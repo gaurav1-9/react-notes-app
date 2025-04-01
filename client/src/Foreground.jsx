@@ -29,8 +29,8 @@ function Foreground() {
     }
 
     return (
-    <div ref={componentRef} className='overflow-hidden fixed flex flex-wrap gap-2 top-0 left-0 w-full h-screen p-4 z-10'>
-        <div className='mt-14 lg:mt-0'>
+    <div ref={componentRef} className='overflow-hidden fixed  top-0 left-0 w-full h-screen p-4 z-10'>
+        <div className='mt-14 lg:mt-0 w-screen flex flex-wrap gap-2'>
             {
                 cardInfo.map((item,index)=>(
                     (item.desc!=="" || item.title!=="")
@@ -43,11 +43,16 @@ function Foreground() {
             <FiPlusCircle 
                 data-tooltip-id='addNew' 
                 className='text-zinc-500 text-3xl cursor-pointer lg:text-5xl'
-                onClick={()=>setAddView(true)}
+                onClick={()=>{
+                        (cardInfo.length<10)?
+                        setAddView(true)
+                        : null
+                    }
+                }
             />
             <Tooltip
                 id='addNew'
-                content='Add new'
+                content={(cardInfo.length<10)?`Add new`:`Maximum note limit reached`}
                 place='bottom'
                 variant='light'
                 style={{borderRadius:10}}

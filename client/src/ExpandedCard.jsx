@@ -11,13 +11,13 @@ function ExpandedCard({cardDetails, setView, id, updateFunc, isAdd, deleteFunc})
     const [desc, setDesc] = useState(cardDetails.desc);
     return (
         <div className='w-full h-screen absolute top-0 backdrop-blur-md z-20 left-0 lg:-left-4'>
-            <div className='relative text-zinc-300 w-3/4 lg:w-1/2 h-3/4 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-zinc-600  rounded-xl lg:rounded-2xl overflow-clip p-4 z-50 shadow-[0_0_6px_rgba(0,0,0,0.25)]'>
+            <div className='relative text-zinc-300 w-3/4 lg:w-1/2 h-2/3 lg:h-3/4 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-zinc-600  rounded-xl lg:rounded-2xl overflow-clip p-4 z-50 shadow-[0_0_6px_rgba(0,0,0,0.25)]'>
                 <div className='flex justify-between'>
                     <div className='flex'>
                         <TbFileSmile className='text-5xl lg:text-6xl mr-1' />
                         <div>
                             <input
-                                className='text-2xl lg:text-4xl outline-none bg-transparent text-white w-35'
+                                className='text-2xl lg:text-4xl outline-none bg-transparent text-white w-35 lg:w-130'
                                 value={
                                     (title==="" || title===undefined)?"":title
                                 }

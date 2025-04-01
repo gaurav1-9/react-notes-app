@@ -22,7 +22,7 @@ function Cards({ cardDetails, foregroundRef, id, dataChange, setCardInfo }) {
         dragConstraints={foregroundRef}
         whileDrag={{ scale: 1.1, cursor: "grabbing" }}
         dragTransition={{ bounceStiffness: 600, bounceDamping: 25 }}
-        className='relative text-zinc-300 w-40 h-25 lg:w-60 lg:h-75 bg-zinc-600 rounded-xl lg:rounded-2xl cursor-grab overflow-clip'
+        className='relative text-zinc-300 w-42 h-25 lg:w-60 lg:h-75 bg-zinc-600 rounded-xl lg:rounded-2xl cursor-grab overflow-clip'
       >
         <div className='flex px-2 pt-3 lg:px-5 lg:pt-6'>
           <TbFileSmile className='text-3xl mr-1 lg:text-4xl' />
@@ -36,7 +36,7 @@ function Cards({ cardDetails, foregroundRef, id, dataChange, setCardInfo }) {
             <p className='leading-2 text-zinc-400 text-[10px] lg:text-sm'>{cardDetails.meta}</p>
           </div>
         </div>
-        <p className='hidden lg:mt-6 lg:px-5 lg:inline-block'>{
+        <p className='hidden lg:mt-6 lg:px-5 lg:block'>{
           (desc.length>110)?desc.slice(0,110)+"...":desc
         }
         </p>
