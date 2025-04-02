@@ -1,8 +1,10 @@
 const Joi = require('joi');
 const express = require('express');
+const morgan = require('morgan');
 const app = express();
 
 app.use(express.json());
+app.use(morgan('tiny'));
 
 const notes = [
     { id: 'idNote1', title: 'Grocery List', desc: 'Buy milk, eggs, bread, and vegetables.' },
@@ -21,7 +23,6 @@ function validateNotes(request){
 }
 
 app.get('/notes', (req,res)=>{
-    console.log("GET: /notes");
     res.send(notes);
 });
 
@@ -29,7 +30,6 @@ app.get('/notes/:id', (req,res)=>{
     const getNotes = notes.find(n => n.id === req.params.id)
     if(!getNotes) return res.status(404).send(`No ID found as ${req.params.id}`);
 
-    console.log(`GET: /notes/${req.params.id}`);
     res.send(getNotes);
 });
 
@@ -44,7 +44,6 @@ app.post('/notes', (req,res)=>{
     }
     notes.push(newNote);
 
-    console.log("POST: /notes")
     res.send(newNote);
 });
 
@@ -58,7 +57,6 @@ app.put('/notes/:id', (req,res) => {
     getNotes.title = req.body.title;
     getNotes.desc = req.body.desc;
 
-    console.log(`PUT: /notes/${req.params.id}`)
     res.send(getNotes);
 });
 
@@ -69,7 +67,6 @@ app.delete('/notes/:id', (req,res) => {
     const index = notes.indexOf(getNotes);
     notes.splice(index,1);
 
-    console.log(`DELETE: /notes/${req.params.id}`)
     res.send(getNotes);
 });
 
